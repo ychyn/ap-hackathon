@@ -29,14 +29,14 @@ struct Taquin {
             }
         }
        
-        h = calcule_heuristique();
+        h = calcul();
     }
 
     bool operator>(const Taquin& autre) const {
         return (g + h) > (autre.g + autre.h);
     }
 
-    int calcule_heuristique() const {
+    int calcul() const {
         int somme = 0;
         for (int j = 0; j < hauteur; j++) {
             for (int i = 0; i < largeur; i++) {
@@ -75,7 +75,7 @@ struct Taquin {
     }
 
     
-    bool est_resolu() const {
+    bool resolu() const {
         int compteur = 1;
         for (int j = 0; j < hauteur; j++) {
             for (int i = 0; i < largeur; i++) {
@@ -105,7 +105,7 @@ std::vector<std::string> resoudre_taquin(const std::vector<std::vector<int>>& gr
         Taquin courant = queue.top();
         queue.pop();
 
-        if (courant.est_resolu()) return courant.chemin;
+        if (courant.resolu()) return courant.chemin;
         
         std::string cle_etat = courant.cle();
         if (visités.count(cle_etat)) continue;
@@ -120,9 +120,9 @@ std::vector<std::string> resoudre_taquin(const std::vector<std::vector<int>>& gr
 
 int main() {
     std::vector<std::vector<int>> grille = {
-        {5, 1, 4},
-        {8, 7, 2},
-        {6, 3, 0}
+        {4, 0, 5},
+        {7, 8, 6},
+        {3, 2, 1}
     };
 
     std::cout << "Résolution du Taquin...\n";
