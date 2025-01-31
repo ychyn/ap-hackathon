@@ -6,6 +6,7 @@
 #include <sys/ioctl.h>
 #include <termios.h>
 #include <queue>
+#include <set>
 
 std::vector<std::vector<int>> creegrille(int largeur, int hauteur) {
     int total = largeur * hauteur;
@@ -136,8 +137,6 @@ void bouge(char key) {
         }
     }
 }
-
-        
 };
 
 namespace internal
@@ -165,7 +164,6 @@ namespace internal
   }
 
 }
-
 
 int main() {
     int n,m;
